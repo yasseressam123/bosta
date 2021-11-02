@@ -1,7 +1,7 @@
 link hosted https://blissful-engelbart-a49085.netlify.app/
 
 # How to run project
-clone repository 
+clone repository <br>
 run npm install
 npm start
 
