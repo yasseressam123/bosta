@@ -54,7 +54,12 @@ class Shipment extends Component {
             break;
           case "RECEIVED_DELIVERY_LOCATION":
             break;
-          case "DELIVERED_TO_SENDER":
+          case "DELIVERED_TO_SENDER": 
+          this.setState({
+            present: 100,
+            color:""
+          });
+          break;
           case "DELIVERED":
             this.setState({
               present: 100,
