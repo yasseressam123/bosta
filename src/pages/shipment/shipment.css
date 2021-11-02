@@ -1,0 +1,85 @@
+.shipment {
+  padding: 18vh 1vw;
+}
+.shipment-progress-container {
+  margin: auto;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+}
+.progress-check {
+  color: #7ccc5b;
+  background-color: white;
+  border-radius: 50%;
+  font-size: 20px;
+}
+.progress-steps-container{
+  padding: 15px 20px;
+  border-bottom: 1px solid grey;
+  margin-bottom: 50px;
+}
+.progress-steps p {
+  color: #909090;
+  font-weight: 500;
+}
+.progress-steps h6 {
+  font-weight: 700;
+  font-size: 18px;
+}
+.progress-steps-status{
+    padding: 15px 35px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid gainsboro;
+  }
+
+  td, th {
+    text-align: left;
+    padding: 15px 30px;
+  }
+  tr:first-child {
+    background-color: #eeeeee;
+    color: #aaaaaa;
+  }
+  tr{
+    color: #767676;
+    font-weight: 600;
+    border-bottom: 1px solid #dedede;
+    height: 50px;
+  }
+.ship-status-title{
+  font-weight: 600;
+  margin-top: 30px;
+}
+.ship-status-address{
+  background-color: #eeeeee;
+  border-radius: 13px;
+  padding: 25px 15px;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 5%);
+  margin-bottom: 20px;
+}
+.ship-status-address p{
+  color: #767676;
+  font-weight: 500;
+}
+.ship-status-help{
+  border-radius: 13px;
+  padding: 25px 15px;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 12%);
+  margin-top: 20px;
+}
+
+.ship-status-help button{
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 4px 45px;
+}
+.ship-prog-status p{
+  font-weight: 600;
+  margin-top: 15px;
+  font-size: 13px;
+}
