@@ -1,100 +1,74 @@
-import React, { useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  Navbar,
+  Nav,
+  Container,
+  NavDropdown,
+  Form,
+} from "react-bootstrap";
 import "./header.css";
-import Translate from "./../translate";
-import {Link , BrowserRouter} from "react-router-dom";
 
-function Navbar() {
-  const [strings, setStrings] = useState(Translate());
-  console.log("str", strings);
-  const _onSetLanguageToItalian = () => {
-    console.log("gg");
-    if (strings.code === "en") {
-      localStorage.setItem("lang", "ar");
-      setStrings(Translate());
-    } else {
-      localStorage.setItem("lang", "en");
-      setStrings(Translate());
+import { useTranslation } from 'react-i18next';
+
+const Header = () => {
+  const { t, i18n } = useTranslation();
+  const handleLang = (event)=>{
+    event.preventDefault();
+    if(localStorage.getItem("lang") === 'en'){
+      localStorage.setItem("lang","ar");
+      i18n.changeLanguage("ar");
+    }else{
+      localStorage.setItem("lang","en");
+      i18n.changeLanguage("en");
     }
-    window.location.reload(false);
-  };
-  return (
-    <div className="">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
-          <img
-            className="navbar-brand me-5"
-            src="https://bosta.co/wp-content/uploads/2019/08/bosta_logo_en_red.svg"
-            alt="bostaLogo"
-            style={{width: 130+'px'}}
-          />
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div
-            className="collapse navbar-collapse justify-content-between"
-            id="navbarSupportedContent"
-          >
-            <ul className="navbar-nav mx-5 mb-2 mb-lg-0">
-              <li className="nav-item">
-              <BrowserRouter>
-                <Link to={{pathname: `/`}} className="nav-link active" aria-current="page">
-                  {strings.header.Home}
-                </Link>
-                </BrowserRouter>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link">{strings.header.Pricing}</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link">{strings.header.ContactSales}</a>
-              </li>
-            </ul>
-            <ul className="navbar-nav  mb-2 mb-lg-0">
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {strings.header.TrackingShipment}
-                </a>
-                {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <div>
-                      <h3>{strings.header.Track.Tracking}</h3>
-                      <p>{strings.header.Track.TrackNo}</p>
-                      <div className="d-flex">
-                        <input type="text" />
-                        <FontAwesomeIcon icon={faSearch} />
-                      </div>
-                    </div>
-                  </li>
-                </ul> */}
-              </li>
-              <li className="nav-item">
-                <a className="nav-link">{strings.header.SignIn}</a>
-              </li>
-              <li className="nav-item">
-                <p onClick={_onSetLanguageToItalian}>{strings.header.lang}</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  }
+  return ( 
+    <div className="header">
+      <Navbar expand="lg">
+        <Container>
+          <Navbar.Brand id="bosta-logo" href="/">
+            <img
+              className="imgLogo"
+              src="https://bosta.co/wp-content/uploads/2019/08/bosta_logo_en_red.svg"
+              alt="bosta-logo"
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <Nav.Link href="/">{t('header.Home')}</Nav.Link>
+              <Nav.Link href="#action2">{t('header.Pricing')}</Nav.Link>
+              <Nav.Link href="#action2">{t('header.ContactSales')}</Nav.Link>
+            </Nav>
+            <Form className="d-flex">
+              <Nav
+                className="me-auto my-2 my-lg-0"
+                style={{ maxHeight: "100px" }}
+                navbarScroll
+              >
+                <NavDropdown title={t('header.TrackingShipment')} id="navbarScrollingDropdown">
+                  {/* <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action4">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action5">
+                    Something else here
+                  </NavDropdown.Item> */}
+                </NavDropdown>
+                <Nav.Link href="#action2">{t('SignIn')}</Nav.Link>
+                <Nav.Link id="language-btn" onClick={handleLang}>{t('lang')}</Nav.Link>
+              </Nav>
+            </Form>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
-}
+};
 
-export default Navbar;
+export default Header;
+

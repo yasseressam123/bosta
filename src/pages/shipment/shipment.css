@@ -39,7 +39,7 @@ table {
     text-align: left;
     padding: 15px 30px;
   }
-  tr:first-child {
+  thead tr{
     background-color: #eeeeee;
     color: #aaaaaa;
   }

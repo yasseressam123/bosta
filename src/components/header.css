@@ -1,11 +1,24 @@
-#navbarSupportedContent ul li a,
-#navbarSupportedContent ul li p{
+.imgLogo{
+    height: 36px;
+    width: auto;
+    object-fit: scale-down;
+    margin-right: 5vw;
+}
+#bosta-logo:hover{
+    border-top: 3px solid white;
+}
+.header a{
+    font-weight: 600;
     font-size: 18px;
-    font-weight: 500;
     color: #101010 !important;
     line-height: 24px;
-    margin-bottom: 0px;
+    margin: 0px 10px;
+    padding: 15px 0px;
+    border-top: 3px solid white;
 }
-#navbarSupportedContent ul li p{
-    cursor: pointer;
+.header a:hover{
+    border-top: 3px solid red;
+}
+#language-btn{
+    color: #ff0000 !important;
 }

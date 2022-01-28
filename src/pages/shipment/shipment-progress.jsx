@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import dateFormat from "dateformat";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
@@ -6,19 +6,21 @@ import "./shipment.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
-function ShipmentProgress(props) {
+import { useTranslation } from 'react-i18next';
 
+function ShipmentProgress(props) {
+  const { t } = useTranslation();
   return (
     <div className="shipment-progress-container">
       <div className="d-flex flex-wrap progress-steps-container">
         <div className="col-3 progress-steps">
           <p>
-            Shipment No. <span>{props.orderData?.TrackingNumber}</span>
+          {t('Tracking.ShipmentNo')} <span>{props.orderData?.TrackingNumber}</span>
           </p>
           <h6>{props.orderData?.CurrentStatus?.state.replace("_", " ")}</h6>
         </div>
         <div className="col-3 progress-steps">
-          <p>Latest Update</p>
+          <p>{t('Tracking.LatestUpdate')}</p>
           <h6>
             {dateFormat(
               props.orderData?.CurrentStatus?.timestamp,
@@ -27,11 +29,11 @@ function ShipmentProgress(props) {
           </h6>
         </div>
         <div className="col-3 progress-steps">
-          <p>Merchant name</p>
+          <p>{t('Tracking.MerchantName')}</p>
           <h6>SOUQ.com</h6>
         </div>
         <div className="col-3 progress-steps">
-          <p>Delivery time within</p>
+          <p>{t('Tracking.DeliveryTime')}</p>
           <h6>3 january 2020</h6>
         </div>
       </div>
@@ -77,17 +79,17 @@ function ShipmentProgress(props) {
         </div>
         <div className="d-flex flex-wrap">
           <div className="col-3 ship-prog-status">
-            <p>TICKET CREATED</p>
+            <p>{t('Tracking.TICKETCREATED')}</p>
           </div>
           <div className="col-3 ship-prog-status">
-            <p>PACKAGE RECEIVED</p>
+            <p>{t('PACKAGERECEIVED')}</p>
           </div>
           <div className="col-3 ship-prog-status" style={{textAlign: 'end'}}>
-            <p>OUT FOR DELIVERY</p>
+            <p>{t('OUTFORDELIVERY')}</p>
             <p></p>
           </div>
           <div className="col-3 ship-prog-status" style={{textAlign: "end"}}>
-            <p>DELIVERED</p>
+            <p>{t('DELIVERED')}</p>
           </div>
         </div>
       </div>

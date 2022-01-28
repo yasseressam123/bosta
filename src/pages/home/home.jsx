@@ -2,8 +2,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { React , Component } from 'react';
 import {Link} from "react-router-dom";
-import Translate from "./../../translate";
 import './home.css';
+import { withTranslation } from 'react-i18next';
+
 
 
 class Home extends Component{
@@ -14,10 +15,6 @@ class Home extends Component{
             translate:""
         }
     }
-    componentDidMount(){
-        let data = Translate();
-        this.setState({translate:data});
-    }
 
     handleSearchNo = (event)=>{
         this.setState(
@@ -26,17 +23,18 @@ class Home extends Component{
 
 
     render() {
+        const { t } = this.props;
         return(
             <div className="Home">
                 <div className="container h-100">
                     <div className="row justify-content-center h-100">
                         <div className="col-6 w-100 d-flex h-100">
                             <div className="shipment-container">
-                                <h1 className="shipment-container-title">{this.state?.translate?.header?.HomePage?.title}</h1>
-                                <h2 className="shipment-container-subTitle">{this.state?.translate?.header?.HomePage?.subTitle}</h2>
+                                <h1 className="shipment-container-title">{t('HomePage.title')}</h1>
+                                <h2 className="shipment-container-subTitle">{t('HomePage.subTitle')}</h2>
                                 <form className="d-flex flex-wrap mb-4">
                                     <div className="shipment-container-search">
-                                        <input name="shipment" onChange={this.handleSearchNo} type="text" placeholder={this.state?.translate?.header?.HomePage?.placeholder} />
+                                        <input name="shipment" onChange={this.handleSearchNo} type="text" placeholder={t('HomePage.placeholder')} />
                                     </div>
                                     <div className="mx-2 d-flex">
                                         {/* <button type="button" onClick={this.handleSearch} className="shipment-container-button">
@@ -54,4 +52,4 @@ class Home extends Component{
         )
       }
 }
-export default Home;
+export default withTranslation()(Home);
